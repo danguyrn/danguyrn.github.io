@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Duy-Anh Nguyen</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f4f1ee;
+      color: #2c2c2c;
+      max-width: 900px;
+      margin: auto;
+      padding: 3rem 1.5rem;
+      line-height: 1.7;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #0b3954;
+      margin-bottom: 0.2rem;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      color: #3f88c5;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
+
+    a {
+      color: #d7263d;
+      text-decoration: none;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    ul {
+      list-style-type: square;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Duy-Anh Nguyen</h1>
+    <p><em>Science Enthusiast • Math Explorer • Cultural Storyteller</em></p>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p>I'm an aspiring science communicator and writer who finds joy in deconstructing complex ideas and rebuilding them through stories, numbers, and metaphors. I founded <strong>The Science Times</strong> to create a space where math, science, and culture converge. When I'm not writing or tutoring, I'm probably overanalyzing a Vietnamese short story, or imagining a world where Enlightenment thinkers could talk to post-war revolutionaries.</p>
+  </section>
+
+  <section>
+    <h2>Selected Work</h2>
+    <ul>
+      <li><strong>The Science Times</strong> – Founder & Editor-in-Chief. Publishing scientific articles with a humanist lens.</li>
+      <li><strong>Math Club</strong> – Teaching math as philosophy and creativity to middle and high schoolers.</li>
+      <li><strong>Pride & Prejudice: A Vietnamese and a Communist</strong> – A short story on ideology and identity.</li>
+      <li><strong>Dystopia Project</strong> – Exploring free speech and power through historical fiction.</li>
+      <li><strong>Mama Tiên Internship</strong> – Helping preserve Vietnamese craft through storytelling.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Philosophy</h2>
+    <p>I believe in questions more than answers, stories more than slogans, and the quiet rigor of learning for its own sake. I'm particularly drawn to how scientific reasoning and cultural introspection can shape a more thoughtful world.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:duyanh@email.com">duyanh@email.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/yourhandle">@yourhandle</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">yourprofile</a></p>
+  </section>
+
+  <footer>
+    <p>"Explain the world through a scientific & mathematical point of view."</p>
+  </footer>
+
+</body>
+</html>
