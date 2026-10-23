@@ -1,0 +1,376 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ENGL 202 Poetry Study Deck</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a stack of ruled index cards on a desk. Tabs across the top switch between Cards, Quiz, Look-alikes and Forms. */
+:root{
+  --desk:#EEF2F9; --card:#FFFFFF; --ink:#16203A; --muted:#58658A; --rule:#CFDAEE; --redline:#E3928B;
+  --blue:#1F4BA0; --blue-ink:#FFFFFF; --blue-soft:#E3EAF8; --red:#C0392B; --red-soft:#FBE9E6; --ok:#2C7A4B; --ok-soft:#E3F3E9;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif; --f-body:"Source Serif 4",Georgia,serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --desk:#0D1320; --card:#161E31; --ink:#E3E8F4; --muted:#9AA6C4; --rule:#27324C; --redline:#7A3C3C;
+  --blue:#7AA0EE; --blue-ink:#0D1320; --blue-soft:#1C2A48; --red:#F07B6E; --red-soft:#3A1F22; --ok:#6CC495; --ok-soft:#173026; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --desk:#0D1320; --card:#161E31; --ink:#E3E8F4; --muted:#9AA6C4; --rule:#27324C; --redline:#7A3C3C;
+  --blue:#7AA0EE; --blue-ink:#0D1320; --blue-soft:#1C2A48; --red:#F07B6E; --red-soft:#3A1F22; --ok:#6CC495; --ok-soft:#173026; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--desk);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
+.wrap{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header .wrap{padding-block:26px 8px;display:grid;gap:6px}
+.eyebrow{font-family:var(--f-display);font-weight:700;font-stretch:115%;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--blue)}
+h1{font-family:var(--f-display);font-stretch:118%;font-weight:800;font-size:clamp(28px,5.5vw,42px);line-height:1.05;margin:0;text-wrap:balance}
+.sub{margin:0;color:var(--muted);max-width:62ch;font-size:16px}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--desk);border-bottom:1px solid var(--rule)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px}
+.tab{font-family:var(--f-display);font-weight:700;font-size:14px;letter-spacing:.03em;border:none;background:transparent;color:var(--muted);padding:8px 14px;border-radius:7px;cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--blue);color:var(--blue-ink)}
+.btn{font-family:var(--f-display);font-weight:700;font-size:14px;border:1.5px solid var(--blue);background:transparent;color:var(--blue);border-radius:7px;padding:8px 14px;cursor:pointer}
+.btn.solid{background:var(--blue);color:var(--blue-ink)}
+.btn.good{border-color:var(--ok);color:var(--ok)} .btn.bad{border-color:var(--red);color:var(--red)}
+.btn:disabled{opacity:.45;cursor:default}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+main{padding-block:20px 60px}
+.controls{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-bottom:14px}
+.controls label{font-family:var(--f-display);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:6px;align-items:center}
+select{font-family:var(--f-body);font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:6px 8px}
+.stat{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.meter{height:6px;background:var(--rule);border-radius:3px;overflow:hidden;margin-bottom:16px}
+.meter i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+
+/* index card */
+.card{background:var(--card);border-radius:6px;box-shadow:0 1px 2px rgba(10,20,40,.12),0 8px 24px rgba(10,20,40,.08);min-height:300px;padding:0 22px 22px;cursor:pointer;position:relative;
+  background-image:linear-gradient(var(--redline),var(--redline)),repeating-linear-gradient(transparent 0 31px,var(--rule) 31px 32px);
+  background-size:100% 2px,100% 100%;background-position:0 58px,0 58px;background-repeat:no-repeat,no-repeat;display:flex;flex-direction:column}
+.card .top{height:58px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.chip{font-family:var(--f-display);font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+.side{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.card .body{padding-top:14px;line-height:32px;flex:1;display:flex;flex-direction:column;justify-content:center}
+.card .front{font-family:var(--f-display);font-stretch:108%;font-weight:800;font-size:clamp(24px,5vw,34px);line-height:1.15;text-align:center;text-wrap:balance}
+.card .frontclue{font-size:19px;text-align:center;line-height:32px}
+.card .back{font-size:17px;line-height:32px}
+.card .back b{color:var(--blue)}
+.card .back .ex{color:var(--muted);font-style:italic}
+.card dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 12px}
+.card dt{font-family:var(--f-display);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:32px}
+.card dd{margin:0}
+.hint{font-family:var(--f-display);font-size:12px;color:var(--muted);text-align:center;margin-top:8px;letter-spacing:.04em}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+.done{text-align:center;padding:40px 10px;display:grid;gap:12px;justify-items:center}
+
+/* quiz */
+.qcard{background:var(--card);border-radius:8px;border:1px solid var(--rule);padding:20px;display:grid;gap:14px}
+.qprompt{font-size:19px}
+.qprompt .lab{display:block;font-family:var(--f-display);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.choices{display:grid;gap:8px}
+.choice{text-align:left;font-family:var(--f-body);font-size:16px;color:var(--ink);background:var(--desk);border:1.5px solid var(--rule);border-radius:7px;padding:10px 12px;cursor:pointer}
+.choice:hover:not(:disabled){border-color:var(--blue)}
+.choice.right{background:var(--ok-soft);border-color:var(--ok)} .choice.wrong{background:var(--red-soft);border-color:var(--red)}
+.choice:disabled{cursor:default}
+.explain{font-size:15.5px;color:var(--muted);border-left:3px solid var(--blue);padding-left:12px}
+.review{display:grid;gap:8px;margin-top:10px;text-align:left;width:100%}
+.review div{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:10px 12px;font-size:15px}
+
+/* look-alikes + forms */
+.pairs{display:grid;gap:14px}
+.pair{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;display:grid;gap:8px}
+.pair h3{font-family:var(--f-display);font-stretch:108%;font-weight:800;font-size:19px;margin:0}
+.pair .vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.pair .vs{grid-template-columns:1fr}}
+.pair .vs div{font-size:15.5px}
+.pair .vs b{display:block;font-family:var(--f-display);color:var(--blue);font-size:14px;letter-spacing:.02em}
+.pair .tip{font-size:15px;background:var(--blue-soft);border-radius:6px;padding:8px 12px}
+.scheme{font-family:var(--f-mono);font-size:15px;background:var(--desk);border-radius:6px;padding:8px 12px;overflow-x:auto;white-space:pre}
+.section-note{color:var(--muted);font-size:15px;margin:0 0 14px;max-width:66ch}
+@media (prefers-reduced-motion:no-preference){.card{transition:transform .15s}.card:active{transform:scale(.995)}}
+</style>
+
+<header><div class="wrap">
+  <div class="eyebrow">English 202A · Segment 1 · Midterm Mon Oct 26</div>
+  <h1>Poetry Study Deck</h1>
+  <p class="sub">Every term and poem from lectures Day 2–10, plus Friday’s Moore and Hayes. Flip cards, take quick quizzes, sort out the terms that look alike, and review the fixed forms.</p>
+</div></header>
+
+<nav class="tabs" aria-label="Study modes"><div class="wrap" role="tablist">
+  <button class="tab" role="tab" id="tab-cards" aria-selected="true" data-view="cards">Flashcards</button>
+  <button class="tab" role="tab" id="tab-quiz" aria-selected="false" data-view="quiz">Quiz</button>
+  <button class="tab" role="tab" id="tab-pairs" aria-selected="false" data-view="pairs">Look-alikes</button>
+  <button class="tab" role="tab" id="tab-forms" aria-selected="false" data-view="forms">Forms &amp; rhyme</button>
+</div></nav>
+
+<main class="wrap">
+  <section id="view-cards">
+    <div class="controls">
+      <label for="deckSel">Deck <select id="deckSel">
+        <option value="terms">Terms</option><option value="poems">Poems: title → details</option><option value="clues">Poems: clue → title &amp; poet</option><option value="all">Everything</option>
+      </select></label>
+      <label for="dirSel">Show first <select id="dirSel"><option value="f">Term / title</option><option value="b">Definition / details</option></select></label>
+      <label for="onlySel">Cards <select id="onlySel"><option value="todo">Not yet known</option><option value="all">All</option></select></label>
+      <button class="btn" id="shuffleBtn" type="button">Shuffle</button>
+      <span class="stat" id="cardStat"></span>
+    </div>
+    <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+    <div id="cardArea"></div>
+  </section>
+
+  <section id="view-quiz" hidden>
+    <div class="controls">
+      <label for="qDeck">Ask about <select id="qDeck">
+        <option value="mix">Everything</option><option value="term">Terms only</option><option value="poem">Poems only</option>
+      </select></label>
+      <button class="btn solid" id="newQuiz" type="button">New 12-question quiz</button>
+      <span class="stat" id="quizStat"></span>
+    </div>
+    <div id="quizArea"></div>
+  </section>
+
+  <section id="view-pairs" hidden>
+    <p class="section-note">These are the pairs exams like to test, because the definitions sound close. Learn the one-line test for telling each pair apart.</p>
+    <div class="pairs" id="pairsArea"></div>
+  </section>
+
+  <section id="view-forms" hidden>
+    <p class="section-note">Rhyme-scheme notation from lecture: letter straight through the whole poem without restarting at A. Use capitals for full rhyme and the same letter in lowercase for a slant rhyme. Count the lines and number every fifth one.</p>
+    <div class="pairs" id="formsArea"></div>
+  </section>
+</main>
+
+<script>
+(function(){
+var S={};try{S=JSON.parse(localStorage.getItem('engl202-study')||'{}')||{};}catch(e){S={};}
+S.known=S.known||{};
+function save(){try{localStorage.setItem('engl202-study',JSON.stringify(S));}catch(e){}}
+var esc=function(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');};
+
+/* term, definition, example, day */
+var TERMS=[
+['Text','The object you are studying critically. From medieval Latin for something woven (as in “textile”).','The poem itself, as opposed to its context.','Day 2'],
+['Context','What surrounds a text: critical (secondary) texts that name it; historical, cultural, biographical, or theoretical texts; and material context, the physical page.','Pound’s own 1914 account of the Metro is biographical context; the printed page is material context.','Day 2'],
+['Critical (secondary) text','A text that examines the primary text overtly and names it.','Brooker, <i>A Student’s Guide to the Selected Poems of Ezra Pound</i>.','Day 2'],
+['Form','The manner in which a poem is composed (the how), as distinct from what the poem is about (the what, or content).','Form as a container for “content.”','Day 2'],
+['Anomaly','Something that doesn’t fit a pre-ordained pattern.','A slant rhyme in a poem of full rhymes.','Day 2'],
+['Metaphor','A direct comparison between two unlike things; a condensed relation in which an idea is expressed through another, unexpected set of words. “The most important literary device.”','Faces as petals in Pound.','Day 2, 6'],
+['Simile','An indirect comparison using “like” or “as.” Metaphor’s cousin.','“crouched like a tailor” (Thomas).','Day 2'],
+['Analogical relation','A relation of proportion written a : b :: c : d.','faces : crowd :: petals : bough.','Day 2'],
+['Poetry (poesis)','From the Ancient Greek <i>poesis</i>, “making” or “creation.”','Haematopoiesis = the making of blood cells.','Day 3'],
+['Lyric poetry','Ancient form meant to be sung to a melody (hence “lyrics”). Today, the voice of a single speaker’s feeling.','Thomas, “Twenty-Four Years.”','Day 3'],
+['Epic poetry','Ancient long narrative poetry of heroic deeds.','The <i>Iliad</i>.','Day 3'],
+['Verse','Can be a synonym for poetry; on its own it can mean rhyming poetry. In the 19th/early 20th c. it was gendered: men wrote “poems,” women “verse.”','“Art” vs. “craft.”','Day 3'],
+['Free verse (vers libre)','Nonmetrical, nonrhyming lines that closely follow the natural rhythms of speech; no regular metrical plan overall.','Frost: “like playing tennis with the net down.” McHugh, Hass.','Day 3, 9'],
+['Enjambment','When a line carries its sentence or clause over to the next line without terminal punctuation.','Auden: “skating / on a pond.”','Day 3, 5'],
+['End-stopped','A line that ends with punctuation and the end of a grammatical phrase.','“The art of losing isn’t hard to master;”','Day 3, 5'],
+['Stanza','A group of lines. Named by size: couplet 2, tercet 3, quatrain 4, quintain 5, sestet 6, septet 7, octave/octet 8.','Villanelle = five tercets + a quatrain.','Day 3'],
+['Internal rhyme','Rhyme within a line.','“Once upon a midnight dreary, while I pondered weak and weary” (Poe).','Day 3'],
+['End rhyme','Rhyme on the final syllables of lines.','“Men seldom make passes / At girls who wear glasses.”','Day 3'],
+['Rhyme scheme','The pattern of end-rhymes, recorded with letters in alphabetical order. The first line is always A.','“The Darkling Thrush”: ABABCDCD EFEFGCGC…','Day 3'],
+['Full (perfect) rhyme','Rhyme where the ending sounds fully match. Marked with capital letters.','love / dove; weary / dreary.','Day 3'],
+['Slant rhyme','Also off rhyme or near rhyme: only part of the ending sound matches. Marked with the same letter in lowercase.','crowd / bough; spit / mat; among / evensong.','Day 3'],
+['Personification','Endowing non-human things or abstractions with life or human characteristics.','Hardy’s century as a “corpse.”','Day 3, 4'],
+['Anthropomorphism','Attributing human form or shape to nonhuman creatures or abstractions (“morph” = shape).','“Twenty-four years remind the tears of my eyes.”','Day 3, 4'],
+['Pathetic fallacy','Attributing human emotions or responses to animals or inanimate things.','Hardy’s wind as the century’s “death-lament.”','Day 3, 4'],
+['Paraphrase','What happens. The first of the three things in decent criticism.','“Old Masters understood suffering.”','Day 4'],
+['Close reading','How it happens: attention to the text’s language and form.','Tracing Auden’s enjambments.','Day 4'],
+['Interpretation','What it means. You have to earn it with evidence.','Arguing what Auden’s occluded Icarus implies.','Day 4'],
+['Parataxis','Placing clauses one after another without connecting words to show their relation.','“I came, I saw, I conquered.”','Day 4'],
+['Prosody','The elements and structures of rhythm and sound in poetry; the theory and practice of versification.','Includes meter and rhyme.','Day 4, 6'],
+['Meter','A pattern of poetic rhythm.','a-PAT-tern-of-po-E-tic-RHY-thm.','Day 6'],
+['Accentual meter','Metrical system built on stressed syllables: iambs, trochees, dactyls.','Shakespeare.','Day 4, 6'],
+['Syllabic meter','Metrical system that counts syllables per line.','Marianne Moore.','Day 4, 6'],
+['Accentual-syllabic meter','Combines counting stresses and syllables.','Iambic pentameter (Sonnet 73).','Day 4, 6'],
+['Quantitative meter','Time-based meter of long and short syllables (some non-English languages).','Classical Greek and Latin.','Day 4, 6'],
+['Sprung rhythm','Hopkins’s invented meter, “sprung” because it is about movement; counts stresses, with a variable number of unstressed syllables.','“The Windhover.”','Day 6'],
+['Reference','A direct mention.','Auden’s poem names Brueghel’s painting (l. 14).','Day 4'],
+['Allusion','A tacit reference: implied rather than specified.','Thomas’s “strut” alludes to Macbeth; Dove alludes to “I have a dream.”','Day 4, 7'],
+['Consonance','Repetition of consonant sounds.','“second self, that seals.”','Day 4, 5'],
+['Assonance','Repetition of vowel sounds.','Plath’s repeated “oo.”','Day 4, 5'],
+['Alliteration','When the starts of words repeat the same sound; can be consonance or assonance (in English usually consonance).','“fold, fallow, and plough.”','Day 4, 5'],
+['Conceit','An often unconventional, logically complex, or surprising metaphor; more broadly, the central gimmick that makes a work work.','Father as Nazi (“Daddy”); despair as carrion; <i>Maus</i>.','Day 4, 5, 6'],
+['Confessional poetry','A type (not a form) of US poetry from the late 1950s/60s that uses, or seems to use, autobiography. Begins with Lowell’s <i>Life Studies</i> and Snodgrass’s <i>Heart’s Needle</i> (1959).','Plath; Anne Sexton.','Day 4, 5'],
+['Apostrophe','An address to a dead or absent person, an animal, a thing, or an abstraction as if alive, present, and able to understand.','“oh Lana Turner we love you get up”; “Daddy”; Despair in “Carrion Comfort.”','Day 4, 5'],
+['Masculine rhyme','Rhyme on a single syllable.','“One two, buckle my shoe.”','Day 4, 5'],
+['Feminine rhyme','Rhyme on two or more syllables.','passes / glasses.','Day 4, 5'],
+['Caesura','A pause or breathing-place within a line, usually near the middle, often marked by punctuation. Plural: caesurae.','Many in “Daddy” (ll. 1, 2, 4, 8, 15, 16).','Day 4, 5'],
+['Intentional fallacy','The fallacy that a work’s meaning or value can be judged by the writer’s intention.','Reading “Daddy” as a literal record of Plath’s father.','Day 5'],
+['Ut pictura poesis','Horace (c. 15 BCE): “As in painting, so in poetry.” Poetry is like painting.','Background to ekphrasis.','Day 5, 9'],
+['Ekphrasis','A verbal or written description of a visual object, such as a painting. Adjective: ekphrastic.','Auden on Brueghel’s <i>Landscape with the Fall of Icarus</i>.','Day 5'],
+['Occlude','To block, shut in or out, cover, or hide.','Auden’s last enjambment occludes the falling boy.','Day 5'],
+['Square brackets','In quotation, mark your own alterations to the original for grammar’s sake, without changing the sense. Use brackets, not parentheses.','“[T]hey” “understood” “[suffering’s] human position.”','Day 5'],
+['Tenor','In a metaphor, the idea: the gist or central point. The tenor rides in the vehicle.','Despair (“Carrion Comfort”); hope (Dickinson).','Day 6'],
+['Vehicle','In a metaphor, the image that carries the tenor across.','Carrion/meat; the bird.','Day 6'],
+['Synecdoche','A part substituted for the whole, a class for a species, or a material for the thing made.','“All hands on deck”; “mortals”; “jeans”; “I’ll have a glass.”','Day 6'],
+['Metonymy','One word substituted for another by a material, causal, or conceptual relation: container for contained, agent for product.','“The White House issued a statement”; “Have you read your Hopkins?”','Day 4, 6'],
+['Inscape','Hopkins: landscape + inner. What gives each thing its own nature, its “thing-y-ness.”','The falcon’s distinct being in “The Windhover.”','Day 6'],
+['Instress','Hopkins: the force that holds an inscape together, or carries it into the beholder. A connector, like a tight wire.','How the bird “stirs” the speaker’s heart.','Day 6'],
+['Neologism','A newly made word (neo = new + logos = word).','Hopkins’s coinages and compounds.','Day 6'],
+['Haecceitas','Latin, “this-ness”: what makes a thing itself. From Duns Scotus; a very Hopkins word.','“Pied Beauty.”','Day 6'],
+['Kenning','An implied simile naming a noun without stating it (very Old English).','“whale-road” = ocean; “windhover”; “lord of the rings.”','Day 6, 7'],
+['Sonnet','A 14-line form: an octave (8) plus a sestet (6), possibly with a volta.','“Carrion Comfort,” “The Windhover.”','Day 6'],
+['Volta','Italian for “turn”: the turn of thought or argument in a sonnet, often but not always between lines 8 and 9.','“Carrion Comfort” turns at “Why?” (l. 9).','Day 6'],
+['Villanelle','19 lines: five tercets and a quatrain, ABA … ABAA, with lines 1 and 3 repeating as refrains (A1, A2).','Thomas, Bishop, Dove.','Day 7'],
+['Oxymoron','A pair of opposed or contradictory terms placed together for emphasis.','“curse, bless, me now”; “O loving hate!”; jumbo shrimp.','Day 7'],
+['Paratext','Material both inside and outside the text: title, dedication, epigraph, section titles, preface.','“One Art”; “To Christ our Lord”; “L’Envoi.”','Day 7'],
+['Self-reflexivity','When a work refers to itself or to its own making.','Bishop’s “(Write it!)”; Escher’s <i>Drawing Hands</i>.','Day 7'],
+['Ballade','Three octaves rhyming ABABBCBC plus a four-line envoi rhyming BCBC, with a refrain.','Parker, “Ballade at Thirty-Five.”','Day 8'],
+['Envoi (l’envoi)','French for “envoy”: a closing short stanza that sums up the poem and repeats the refrain. Originally a dedication to a patron.','Parker’s “Princes…” stanza.','Day 8'],
+['Troubadours','Individual traveling or court singers of Provence in the High Middle Ages (1100–1350); origin of the ballade.','Courtly love.','Day 8'],
+['Courtly love','The troubadours’ ideal: subservience to a cold, cruel mistress; quasi-religious praise of her beauty; extramarital and (in theory) celibate.','Parker turns it upside down.','Day 8'],
+['Ars poetica','“The art of poetry”: a poem that meditates on poetry or explains how to make it. From Horace’s treatise (c. 15 BCE).','MacLeish, McHugh, Hass, Moore, Hayes.','Day 9'],
+['Laureate','“Awarded”; from the laurel crown. Poets laureate advise the Library of Congress and raise awareness of poetry.','Arthur Sze (2025–), focus on translation.','Day 10'],
+['Platonic form','For Plato, form is an ideal that doesn’t exist in our world of appearances; things imitate or participate in it.','Perfect roundness vs. the potter’s plate.','Day 10'],
+['Semiotics','The study of signs. Sign = signifier / signified.','Hass’s “blackberry.”','Day 10'],
+['Signifier','The word or image that points to something.','“tree,” “arbre,” “Baum,” “árbol.”','Day 10'],
+['Signified','The thing or concept the sign refers to.','The tree itself.','Day 10']
+];
+
+/* title, poet, date, form, devices, theme, clue (no quotation), day */
+var POEMS=[
+['In a Station of the Metro','Ezra Pound','1913','Two-line imagist poem','Metaphor; analogy faces : crowd :: petals : bough; no verb; slant rhyme crowd / bough','A sudden vision of beautiful faces in a crowded Paris subway, caught as an image rather than a statement. Pound called it “an equation… in little splotches of colour.”','A two-line poem about faces glimpsed underground in Paris, likened to petals on a dark branch.','Day 2'],
+['The Woodspurge','Dante Gabriel Rossetti','1870','Four quatrains, each on one rhyme sound','Slant rhyme “was” against Alas / grass / pass; the speaker’s body (knees, lips, ears, eyes); repetition of “the wind was still”','Perfect grief brings no wisdom or memory; the only lesson that stays is a trivial, precise fact: the woodspurge has a cup of three.','A grieving speaker sits with his head between his knees and, staring at the weeds, learns only how many cups a small flower has.','Day 3'],
+['The Darkling Thrush','Thomas Hardy','dated Dec. 31, 1900','Four octaves, ABABCDCD with rhymes recurring across stanzas (EFEFGCGC)','Personification (“The Century’s corpse”); pathetic fallacy; slant rhymes among / evensong, small / soul','A bleak winter landscape at the turn of the century; an aged thrush sings of a hope the speaker cannot see or share.','At dusk on the last day of a century, a gloomy speaker by a gate hears an old, frail bird burst into joyful song.','Day 3'],
+['Twenty-Four Years','Dylan Thomas','1938','Lyric; irregular rhyme scheme (ABBCDDCEF)','Anthropomorphism (years that “remind”); womb / shroud conceit; allusion to Macbeth’s “strut”; simile “like a tailor”','A birthday poem: birth is already the beginning of dying; life is a journey toward death.','A birthday poem in which the speaker, still in the womb, sews his own burial cloth and sets out toward death.','Day 4'],
+['Daddy','Sylvia Plath','1962','Confessional lyric in five-line stanzas','Apostrophe; Nazi conceit; assonance (repeated “oo”); nursery-rhyme rhythm; many caesurae','A daughter’s furious reckoning with a dead father (and a husband) and her break from both. Beware the intentional fallacy: it is art, not biography.','A confessional poem addressed to a dead father pictured as a Nazi, ending with the speaker declaring she is through.','Day 4–5'],
+['Musée des Beaux Arts','W. H. Auden','1938','Free-verse ekphrastic poem, irregular rhyme','Ekphrasis; reference to Brueghel (l. 14); expressive enjambment (“skating / on a pond”); the last enjambment occludes Icarus','Suffering happens while the rest of the world carries on, indifferent. The Old Masters understood this.','A museum poem about how the Old Masters painted suffering going on while ordinary life continues, ending with a boy falling into the sea.','Day 5'],
+['Carrion Comfort','Gerard Manley Hopkins','1885 (pub. 1918)','Petrarchan sonnet, one of the “terrible sonnets” (ABBAABBA CDCDCD)','Apostrophe to Despair; conceit: despair as carrion (meat is the vehicle); volta at “Why?” (l. 9); Eucharistic echo; sprung rhythm','Refusing to feed on despair, and discovering that the struggle was a wrestling match with God.','A sonnet whose speaker refuses to feast on despair, then realizes he has been wrestling all night with God.','Day 6'],
+['The Windhover','Gerard Manley Hopkins','1877','Petrarchan sonnet (ABBA ABBA CD CD CD); sprung rhythm','Kenning title; dedication “To Christ our Lord” (paratext); alliteration; inscape','A love sonnet to a falcon in flight, whose mastery and fall into fire reveal Christ. “My heart… stirred for a bird.”','A sonnet, dedicated to Christ, about watching a kestrel master the wind at dawn.','Day 6–7'],
+['Pied Beauty','Gerard Manley Hopkins','1877','Curtal (shortened) sonnet: 10½ lines','Compound neologisms; alliteration; lists; abrupt close “Praise him”','Praise of God for dappled, varied, changing things: the changeable world points to a Creator beyond change.','A short hymn giving glory to God for spotted, streaked and freckled things.','Day 6'],
+['Do Not Go Gentle into That Good Night','Dylan Thomas','1951','Villanelle','Refrains A1 / A2; four kinds of men (wise, good, wild, grave); oxymoron “curse, bless”; pun on “good night”','A son urges his dying father to rage against death.','A villanelle in which a son pleads with his dying father to fight death instead of accepting it.','Day 7'],
+['One Art','Elizabeth Bishop','1976','Villanelle with varied refrains','Refrains on mastering loss; title as paratext; self-reflexive “(Write it!)”; master / disaster rhyme','Losing things gets practiced, escalating from keys to a continent to a beloved; the tone of control cracks under real grief.','A villanelle insisting a skill is easy to learn, as the list of losses grows from keys to a person.','Day 7'],
+['Testimony: 1968','Rita Dove','2020','Villanelle with shifting punctuation in the refrains','Repetition with a difference; slant rhymes; allusion to MLK (motel balcony) and RFK (hotel kitchen); “daisies and carbines” (1967 protest photos)','Grief and the fight to keep hope after the assassinations of 1968; a poem of witness.','A recent villanelle about grief and hope in a year of assassinations and protest.','Day 7'],
+['Ballade at Thirty-Five','Dorothy Parker','1926','Ballade: three octaves plus an envoi','Refrain “I loved them until they loved me”; envoi addressed to “Princes” (paratext “L’Envoi”); wit; parody of courtly love','A worldly woman’s confession that she loses interest once love is returned; courtly love turned inside out.','A ballade by a witty woman of a certain age about loving men only until they love her back.','Day 8'],
+['What He Thought','Heather McHugh','1994','Free verse; ars poetica','Narrative build to a final story; Giordano Bruno burned and gagged in Rome','What poetry is: what is thought but cannot be said; the poets’ self-importance is upended by a quiet man’s story.','Poets on a junket in Italy; a quiet guide ends the trip by telling how a philosopher was burned, gagged, in a Roman square.','Day 9'],
+['Ars Poetica','Archibald MacLeish','1926','Ars poetica in rhymed couplets','Paradoxes (“palpable and mute”); similes; the closing claim that a poem should not mean but be','A poem should be, not explain: an image and an experience rather than a statement.','A poem made of rules for what a poem should be, ending with the claim that it should exist, not mean.','Day 9'],
+['Meditation at Lagunitas','Robert Hass','1979','Free verse; ars poetica','Repetition of “blackberry”; signifier vs. signified; general idea vs. particular','Loss, language, and desire: every word mourns the thing it names, yet particular moments of tenderness still matter.','A poem that opens by saying all new thinking is about loss, and ends repeating the name of a fruit.','Day 10'],
+['On Robert Hass’s “Meditation at Lagunitas”','Pimone Triplett','—','Poem responding to another poem','Intertextuality: a poem about a poem (re-read in the course reader)','A poet reading and answering Hass, which turns criticism into poetry.','A contemporary poem whose title names the Hass poem it responds to.','Day 10'],
+['Poetry','Marianne Moore','1919 (later cut to 3 lines)','Syllabic verse; ars poetica; two versions','“I, too, dislike it”; “imaginary gardens with real toads in them”; revision as a question of what the text is','Poetry earns its place by being genuine, not by grandness: an honest suspicion of poetry inside a poem.','A poem that admits it dislikes poetry, then finds a place in it for the genuine.','Oct 23'],
+['Ars Poetica with Bacon','Terrance Hayes','2016','Contemporary ars poetica','Re-read in the reader and listen to his recorded reading','A poem about the making of poems.','A recent ars poetica on the syllabus for Oct 23 (re-read it in the reader).','Oct 23']
+];
+
+/* ---------- cards ---------- */
+function termCards(){return TERMS.map(function(t){return {id:'t:'+t[0],kind:'Term',chip:t[3],front:'<div class="front">'+t[0]+'</div>',back:'<div class="back">'+t[1]+'<br><span class="ex">e.g. '+t[2]+'</span></div>'};});}
+function poemCards(){return POEMS.map(function(p){return {id:'p:'+p[0],kind:'Poem',chip:p[7],front:'<div class="front">“'+esc(p[0])+'”</div><div class="hint" style="font-size:15px">poet? form? theme?</div>',
+  back:'<dl class="back"><dt>Poet</dt><dd><b>'+p[1]+'</b> ('+p[2]+')</dd><dt>Form</dt><dd>'+p[3]+'</dd><dt>Devices</dt><dd>'+p[4]+'</dd><dt>Theme</dt><dd>'+p[5]+'</dd></dl>'};});}
+function clueCards(){return POEMS.map(function(p){return {id:'c:'+p[0],kind:'Identify',chip:p[7],front:'<div class="frontclue">'+p[6]+'</div>',back:'<div class="front" style="font-size:26px">“'+esc(p[0])+'”</div><div class="back" style="text-align:center"><b>'+p[1]+'</b></div>'};});}
+var deck=[],idx=0,flipped=false;
+function build(){
+  var d=document.getElementById('deckSel').value,only=document.getElementById('onlySel').value;
+  var all=d==='terms'?termCards():d==='poems'?poemCards():d==='clues'?clueCards():termCards().concat(poemCards(),clueCards());
+  S.total=all.length;
+  deck=only==='todo'?all.filter(function(c){return !S.known[c.id];}):all;
+  deck._all=all;idx=0;flipped=false;render();
+}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function render(){
+  var all=deck._all||[],known=all.filter(function(c){return S.known[c.id];}).length;
+  document.getElementById('meter').style.width=(all.length?known/all.length*100:0)+'%';
+  document.getElementById('cardStat').textContent=known+' of '+all.length+' known';
+  var area=document.getElementById('cardArea');
+  if(idx>=deck.length){area.innerHTML='<div class="done"><div class="front" style="font-family:var(--f-display);font-weight:800;font-size:26px">'+(deck.length?'End of the stack.':'Nothing left in this stack.')+'</div><p class="stat">'+known+' of '+all.length+' cards marked known in this deck.</p><div class="row"><button class="btn solid" id="again" type="button">Go through again</button><button class="btn" id="resetK" type="button">Forget what I marked</button></div></div>';
+    document.getElementById('again').onclick=build;
+    document.getElementById('resetK').onclick=function(){all.forEach(function(c){delete S.known[c.id];});save();build();};return;}
+  var c=deck[idx],rev=document.getElementById('dirSel').value==='b',showBack=rev?!flipped:flipped;
+  area.innerHTML='<div class="card" id="card" tabindex="0" role="button" aria-label="Flip card"><div class="top"><span class="chip">'+c.kind+' · '+c.chip+'</span><span class="side">'+(idx+1)+' / '+deck.length+(S.known[c.id]?' · known':'')+'</span></div><div class="body">'+(showBack?c.back:c.front)+'</div></div>'+
+   '<div class="hint">Tap the card or press Space to flip · ← → to move</div>'+
+   '<div class="row"><button class="btn" id="prev" type="button"'+(idx===0?' disabled':'')+'>Back</button><button class="btn bad" id="no" type="button">Still learning</button><button class="btn good" id="yes" type="button">Got it</button></div>';
+  var card=document.getElementById('card');
+  card.onclick=flip;card.onkeydown=function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();flip();}};
+  document.getElementById('prev').onclick=function(){if(idx>0){idx--;flipped=false;render();}};
+  document.getElementById('no').onclick=function(){delete S.known[c.id];save();deck.push(c);idx++;flipped=false;render();};
+  document.getElementById('yes').onclick=function(){S.known[c.id]=1;save();idx++;flipped=false;render();};
+}
+function flip(){flipped=!flipped;render();var c=document.getElementById('card');if(c)c.focus();}
+document.addEventListener('keydown',function(e){
+  if(document.getElementById('view-cards').hidden||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return;
+  if(e.key==='ArrowRight'){var y=document.getElementById('yes');if(y)y.click();}
+  if(e.key==='ArrowLeft'){var p=document.getElementById('prev');if(p&&!p.disabled)p.click();}
+});
+['deckSel','dirSel','onlySel'].forEach(function(id){document.getElementById(id).addEventListener('change',function(){S[id]=this.value;save();build();});
+  if(S[id])document.getElementById(id).value=S[id];});
+document.getElementById('shuffleBtn').onclick=function(){var a=deck._all;deck=shuffle(deck.slice(idx));deck._all=a;idx=0;flipped=false;render();};
+
+/* ---------- quiz ---------- */
+function pick(arr,n,excl){var c=shuffle(arr.filter(function(x){return x!==excl;}));return c.slice(0,n);}
+function strip(s){return s.replace(/<[^>]+>/g,'');}
+function makeQ(type){
+  if(type==='term'){var t=TERMS[Math.floor(Math.random()*TERMS.length)];
+    if(Math.random()<.5){var d=pick(TERMS,3,t);return {lab:'Which term matches this definition?',p:t[1],ans:t[0],opts:shuffle([t[0]].concat(d.map(function(x){return x[0];}))),ex:'<b>'+t[0]+'</b>: e.g. '+t[2]};}
+    var d2=pick(TERMS,3,t);return {lab:'Which is the definition of…',p:'<b>'+t[0]+'</b>',ans:strip(t[1]),opts:shuffle([strip(t[1])].concat(d2.map(function(x){return strip(x[1]);}))),ex:'Example: '+t[2]};}
+  var p=POEMS[Math.floor(Math.random()*(POEMS.length-2))],r=Math.random();
+  if(r<.34){var o=pick(POEMS,3,p);return {lab:'Identify the poem (title and poet)',p:p[6],ans:'“'+p[0]+'”, '+p[1],opts:shuffle(['“'+p[0]+'”, '+p[1]].concat(o.map(function(x){return '“'+x[0]+'”, '+x[1];}))),ex:p[5]};}
+  if(r<.67){var poets=['Ezra Pound','Dante Gabriel Rossetti','Thomas Hardy','Dylan Thomas','Sylvia Plath','W. H. Auden','Gerard Manley Hopkins','Elizabeth Bishop','Rita Dove','Dorothy Parker','Heather McHugh','Archibald MacLeish','Robert Hass','Marianne Moore'];
+    var w=shuffle(poets.filter(function(x){return x!==p[1];})).slice(0,3);return {lab:'Who wrote it?',p:'“'+esc(p[0])+'”',ans:p[1],opts:shuffle([p[1]].concat(w)),ex:p[3]+'. '+p[5]};}
+  var forms=['Petrarchan sonnet','Villanelle','Ballade','Free verse / ars poetica','Two-line imagist poem','Four octaves with recurring rhymes','Curtal sonnet','Confessional lyric'];
+  var fm=/Curtal/.test(p[3])?'Curtal sonnet':/Petrarchan/.test(p[3])?'Petrarchan sonnet':/Villanelle/.test(p[3])?'Villanelle':/Ballade/.test(p[3])?'Ballade':/imagist/.test(p[3])?'Two-line imagist poem':/octaves/.test(p[3])?'Four octaves with recurring rhymes':/Confessional/.test(p[3])?'Confessional lyric':/ars poetica/i.test(p[3])?'Free verse / ars poetica':null;
+  if(!fm)return makeQ('term');
+  return {lab:'What is the form or type of…',p:'“'+esc(p[0])+'” ('+p[1]+')',ans:fm,opts:shuffle([fm].concat(shuffle(forms.filter(function(x){return x!==fm;})).slice(0,3))),ex:p[3]+'. Devices: '+p[4]};
+}
+var quiz=null;
+function newQuiz(){var m=document.getElementById('qDeck').value,qs=[],seen={};
+  while(qs.length<12){var q=makeQ(m==='mix'?(Math.random()<.55?'term':'poem'):m);if(seen[q.p])continue;seen[q.p]=1;qs.push(q);}
+  quiz={qs:qs,i:0,score:0,miss:[]};drawQ();}
+function drawQ(){var a=document.getElementById('quizArea');
+  if(!quiz){a.innerHTML='<div class="qcard"><p class="qprompt" style="margin:0">Twelve mixed questions: definitions, terms, poem identification, poets and forms. You get an explanation after each one and a list of misses at the end.</p><div><button class="btn solid" id="startQ" type="button">Start</button></div></div>';document.getElementById('startQ').onclick=newQuiz;return;}
+  document.getElementById('quizStat').textContent='Score '+quiz.score+' / '+Math.min(quiz.i,12);
+  if(quiz.i>=quiz.qs.length){var pct=Math.round(quiz.score/12*100);
+    a.innerHTML='<div class="done"><div style="font-family:var(--f-display);font-weight:800;font-size:30px">'+quiz.score+' / 12 ('+pct+'%)</div><p class="stat">'+(pct>=85?'Strong. Try the printed exam under time.':pct>=65?'Close. Review the misses below, then run another quiz.':'Go back to the flashcards for the decks you missed, then try again.')+'</p>'+
+     (quiz.miss.length?'<div class="review">'+quiz.miss.map(function(q){return '<div><b>'+q.p+'</b><br>→ '+q.ans+'</div>';}).join('')+'</div>':'')+'<button class="btn solid" id="again2" type="button">New quiz</button></div>';
+    document.getElementById('again2').onclick=newQuiz;return;}
+  var q=quiz.qs[quiz.i];
+  a.innerHTML='<div class="qcard"><div class="stat">Question '+(quiz.i+1)+' of 12</div><div class="qprompt"><span class="lab">'+q.lab+'</span>'+q.p+'</div><div class="choices">'+q.opts.map(function(o,j){return '<button class="choice" type="button" data-j="'+j+'">'+o+'</button>';}).join('')+'</div><div id="qfb"></div></div>';
+  a.querySelectorAll('.choice').forEach(function(b){b.onclick=function(){
+    var ok=q.opts[+b.dataset.j]===q.ans;if(ok)quiz.score++;else quiz.miss.push(q);
+    a.querySelectorAll('.choice').forEach(function(x){x.disabled=true;if(q.opts[+x.dataset.j]===q.ans)x.classList.add('right');});if(!ok)b.classList.add('wrong');
+    document.getElementById('qfb').innerHTML='<p class="explain">'+(ok?'Right. ':'The answer is <b>'+q.ans+'</b>. ')+q.ex+'</p><button class="btn solid" id="nextQ" type="button">'+(quiz.i===11?'See results':'Next')+'</button>';
+    document.getElementById('quizStat').textContent='Score '+quiz.score+' / '+(quiz.i+1);
+    var n=document.getElementById('nextQ');n.focus();n.onclick=function(){quiz.i++;drawQ();};};});
+}
+document.getElementById('newQuiz').onclick=newQuiz;
+
+/* ---------- look-alikes ---------- */
+var PAIRS=[
+ ['Metaphor vs. simile','Metaphor','Direct comparison: faces <i>are</i> petals.','Simile','Indirect comparison with “like” or “as”: “like a tailor.”','Look for “like” or “as.” No connective means metaphor.'],
+ ['Metonymy vs. synecdoche','Metonymy','Substitution by association: container for contained, author for work (“the White House,” “your Hopkins”).','Synecdoche','A part for the whole, or the material for the thing made (“hands,” “jeans,” “a glass”).','Ask: is the substitute <i>part of</i> the thing (synecdoche) or only <i>associated with</i> it (metonymy)? The professor’s tip: metonymy often involves time, as with Petrarch → “Petrarchan.”'],
+ ['Personification vs. anthropomorphism vs. pathetic fallacy','Personification / anthropomorphism','Personification gives things life or human traits; anthropomorphism gives human <i>form or shape</i> (“morph” = shape).','Pathetic fallacy','Giving human <i>emotion</i> to nature or objects: a grieving wind, a mournful sky.','Traits → personification. Shape or body → anthropomorphism. Feelings in nature → pathetic fallacy.'],
+ ['Reference vs. allusion','Reference','A direct mention: Auden names Brueghel.','Allusion','A tacit, implied reference: Thomas’s “strut” → Macbeth; Dove → “I have a dream.”','Named outright is a reference; hinted at is an allusion.'],
+ ['Assonance vs. consonance vs. alliteration','Assonance / consonance','Assonance repeats vowel sounds (Plath’s “oo”); consonance repeats consonant sounds.','Alliteration','Repetition at the <i>start</i> of words. Can be either kind, but in English usually consonance.','Position decides alliteration; the type of sound decides assonance vs. consonance.'],
+ ['Enjambment vs. end-stopped vs. caesura','Enjambment / end-stopped','Enjambed: the phrase runs past the line end with no punctuation. End-stopped: punctuation closes the phrase at the line end.','Caesura','A pause <i>inside</i> a line, often mid-line, marked by punctuation.','Line ending → enjambed or end-stopped. Middle of the line → caesura.'],
+ ['Full vs. slant rhyme','Full (perfect) rhyme','Endings match completely: love / dove. Mark with capitals.','Slant (off, near) rhyme','Only part matches: crowd / bough, among / evensong. Mark with the same letter in lowercase.','Say both words out loud. If you have to fudge the vowel or the stress, it is slant.'],
+ ['Masculine vs. feminine rhyme','Masculine','Rhymes on one syllable: two / shoe.','Feminine','Rhymes on two or more syllables: passes / glasses.','Count the syllables that rhyme.'],
+ ['Internal vs. end rhyme','Internal','Within a line: “dreary / weary” in Poe.','End','On the last syllables of lines: what a rhyme scheme records.','Rhyme schemes only track end rhyme.'],
+ ['Tenor vs. vehicle','Tenor','The idea being expressed (despair, hope, aging).','Vehicle','The image that carries it (carrion, a bird, autumn).','The tenor rides <i>in</i> the vehicle: the tenor is the passenger, the image is the car.'],
+ ['Inscape vs. instress','Inscape','What makes a thing itself, its “thing-y-ness.”','Instress','The force that holds the inscape together or carries it into the beholder.','In-scape = the thing’s inner shape; in-stress = the tension that delivers it to you.'],
+ ['Apostrophe vs. direct address','Apostrophe','Addressing someone dead or absent, or a thing or idea, as if present: Despair, “Daddy,” Lana Turner.','Direct address','Speaking to someone actually present and able to hear.','Ask whether the addressee could answer back. If not, it is apostrophe. Lecture asked this about “thee” in “Carrion Comfort.”'],
+ ['Conceit vs. metaphor','Metaphor','Any direct comparison.','Conceit','A surprising, logically complex metaphor, often sustained, or the central gimmick of a whole work (father as Nazi; <i>Maus</i>).','All conceits are metaphors; a conceit is the one that is startling or structures the whole piece.'],
+ ['Form vs. type (confessional, ars poetica)','Form','Has rules: line count, rhyme scheme, refrains (sonnet, villanelle, ballade).','Type / mode','Defined by stance or subject, with no set structure: confessional poetry, ars poetica, ekphrasis.','If you could check it by counting lines and marking rhymes, it is a form.']
+];
+document.getElementById('pairsArea').innerHTML=PAIRS.map(function(p){return '<div class="pair"><h3>'+p[0]+'</h3><div class="vs"><div><b>'+p[1]+'</b>'+p[2]+'</div><div><b>'+p[3]+'</b>'+p[4]+'</div></div><div class="tip"><b style="font-family:var(--f-display)">Test: </b>'+p[5]+'</div></div>';}).join('');
+
+/* ---------- forms ---------- */
+var FORMS=[
+ ['Petrarchan (Italian) sonnet','ABBAABBA CDECDE\nABBAABBA CDCDCD','14 lines: an octave plus a sestet; the volta usually comes at line 9. More rhyming than the English sonnet. Examples: “Carrion Comfort,” “The Windhover.” Named for Petrarch, which is metonymy.'],
+ ['Spenserian sonnet','ABAB BCBC CDCD EE','Interlocking quatrains plus a couplet. Edmund Spenser, 1500s (<i>The Faerie Queene</i>).'],
+ ['English (Shakespearean) sonnet','ABAB CDCD EFEF GG','Three quatrains plus a closing couplet; the turn often comes at the couplet. Example: Sonnet 73 on the practice exam.'],
+ ['Curtal sonnet','10½ lines (6 + 4½)','Hopkins’s shrunken sonnet: “Pied Beauty.”'],
+ ['Villanelle','A1 B A2 / A B A1 / A B A2 / A B A1 / A B A2 / A B A1 A2','19 lines: five tercets plus a quatrain. Lines 1 and 3 return as refrains, sometimes with small changes. Thomas, Bishop, Dove. Lecture’s phrase: “repetition with a difference.”'],
+ ['Ballade','ABABBCBC ×3 + envoi BCBC','Three octaves (think octopus) plus a four-line envoi, with a refrain at the end of each stanza. Comes from the troubadours and courtly love. Parker.'],
+ ['Stanza sizes','2 couplet · 3 tercet · 4 quatrain · 5 quintain\n6 sestet · 7 septet · 8 octave/octet','These names can also describe rhyming groups of lines within a stanza.'],
+ ['How to mark a rhyme scheme','Line 1 = A. Rhymes with it? Also A. Doesn’t? B.\nFull rhyme → capital.  Slant rhyme → lowercase.\nNever restart at A for a new stanza.','Continuous lettering is how you catch the “sky / nigh … dry / I” rhyme recurring across stanzas in “The Darkling Thrush.”'],
+ ['Quoting poetry in your prose','“…the wind was still, / Shaken out dead…” (ll. 1-2)\n“…heard the day pass. // My eyes…” (ll. 8-10)','Single slash for a line break, double slash for a stanza break; “l.” for one line, “ll.” for several; square brackets for your own changes. Poem titles go in quotation marks; book-length works go in italics.'],
+ ['Metrical systems','accentual · syllabic · accentual-syllabic\nquantitative · sprung rhythm','Accentual: stresses (Shakespeare). Syllabic: count syllables (Moore). Accentual-syllabic: both (iambic pentameter). Quantitative: long and short syllables. Sprung: Hopkins’s invention.']
+];
+document.getElementById('formsArea').innerHTML=FORMS.map(function(f){return '<div class="pair"><h3>'+f[0]+'</h3><div class="scheme">'+esc(f[1])+'</div><div style="font-size:15.5px">'+f[2]+'</div></div>';}).join('');
+
+/* ---------- tabs ---------- */
+function show(v){document.querySelectorAll('.tab').forEach(function(t){t.setAttribute('aria-selected',t.dataset.view===v?'true':'false');});
+  ['cards','quiz','pairs','forms'].forEach(function(x){document.getElementById('view-'+x).hidden=x!==v;});
+  S.view=v;save();if(v==='quiz'&&!quiz)drawQ();}
+document.querySelectorAll('.tab').forEach(function(t){t.onclick=function(){show(t.dataset.view);};});
+var h=(location.hash||'').slice(1);
+build();show(['cards','quiz','pairs','forms'].indexOf(h)>-1?h:(S.view||'cards'));
+})();
+</script>
+
+</body></html>
